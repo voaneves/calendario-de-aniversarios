@@ -1,5 +1,12 @@
 const form = document.getElementById("form");
-const tabela = document.getElementById("tbody");
+const tabela = document.getElementById("tabela");
+let aniversarios = [];
+
+// Carrega os dados do localStorage, se houver
+if (localStorage.getItem("aniversarios")) {
+  aniversarios = JSON.parse(localStorage.getItem("aniversarios"));
+  atualizarTabela();
+}
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -13,37 +20,66 @@ function adicionarAniversario() {
   ).toLocaleDateString(undefined, { timeZone: "UTC" });
 
   if (nome && data) {
-    const row = tabela.insertRow();
-    const colNome = row.insertCell(0);
-    const colData = row.insertCell(1);
-    const colAcoes = row.insertCell(2);
+    const aniversario = {
+      nome: nome,
+      data: data,
+    };
 
-    colNome.textContent = nome;
-    colData.textContent = data;
-    colAcoes.innerHTML = `<button onclick="editarAniversario(this)">Editar</button>
-                          <button onclick="removerAniversario(this)">Remover</button>`;
+    aniversarios.push(aniversario);
+    localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
 
     form.reset();
+    atualizarTabela();
   }
 }
 
 function editarAniversario(button) {
   const row = button.parentNode.parentNode;
-  const colNome = row.cells[0];
-  const colData = row.cells[1];
-  const nome = colNome.textContent;
-  const data = colData.textContent;
-
-  const novoNome = prompt("Novo nome:", nome);
-  const novaData = prompt("Nova data:", data);
+  const index = row.rowIndex - 1;
+  const aniversario = aniversarios[index];
+  
+  const novoNome = prompt("Novo nome:", aniversario.nome);
+  const novaData = prompt("Nova data:", aniversario.data);
 
   if (novoNome && novaData) {
-    colNome.textContent = novoNome;
-    colData.textContent = novaData;
+    aniversario.nome = novoNome;
+    aniversario.data = novaData;
+    localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
+    atualizarTabela();
   }
 }
 
 function removerAniversario(button) {
   const row = button.parentNode.parentNode;
+  const index = row.rowIndex - 1;
+  aniversarios.splice(index, 1);
+  localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
   tabela.deleteRow(row.rowIndex);
+}
+
+function calcularIdade(date) {
+  const [day, month, year] = date.split("/");
+  const birthdateTimeStamp = new Date(`${year}-${month}-${day}`);
+  const currentTimestamp = Date.now();
+  const difference = currentTimestamp - birthdateTimeStamp.getTime();
+  const currentAge = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25));
+  return currentAge;
+}
+
+function atualizarTabela() {
+  tabela.innerHTML = "<tr><th class='order'>Nome</th><th class='order'>Data</th><th class='order'>Idade</th><th>Ações</th></tr>";
+
+  aniversarios.forEach((aniversario) => {
+    const row = tabela.insertRow();
+    const colNome = row.insertCell(0);
+    const colData = row.insertCell(1);
+    const colIdade = row.insertCell(2);
+    const colAcoes = row.insertCell(3);
+
+    colNome.textContent = aniversario.nome;
+    colData.textContent = aniversario.data.substring(0, 5);
+    colIdade.textContent = calcularIdade(aniversario.data);
+    colAcoes.innerHTML = `<button onclick="editarAniversario(this)">Editar</button>
+                          <button onclick="removerAniversario(this)">Remover</button>`;
+  });
 }

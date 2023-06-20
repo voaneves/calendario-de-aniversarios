@@ -28,9 +28,12 @@ form {
   border: 1px solid #ddd;
 }
 
+input {
+  width: 100%;
+}
+
 input,
 button {
-  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
@@ -91,4 +94,16 @@ table td {
 
 table th {
   background-color: #f2f2f2;
+}
+
+table th:hover {
+  background-color: #eaeaea;
+}
+
+table tr:hover {
+  background-color: #f2f2f2;
+}
+
+.order {
+  cursor: pointer;
 }
