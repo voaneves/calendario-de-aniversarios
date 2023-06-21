@@ -2,7 +2,6 @@ const form = document.getElementById("form");
 const tabela = document.getElementById("tabela");
 let aniversarios = [];
 
-// Carrega os dados do localStorage, se houver
 if (localStorage.getItem("aniversarios")) {
   aniversarios = JSON.parse(localStorage.getItem("aniversarios"));
   atualizarTabela();
@@ -37,7 +36,7 @@ function editarAniversario(button) {
   const row = button.parentNode.parentNode;
   const index = row.rowIndex - 1;
   const aniversario = aniversarios[index];
-  
+
   const novoNome = prompt("Novo nome:", aniversario.nome);
   const novaData = prompt("Nova data:", aniversario.data);
 
@@ -67,7 +66,8 @@ function calcularIdade(date) {
 }
 
 function atualizarTabela() {
-  tabela.innerHTML = "<tr><th class='order'>Nome</th><th class='order'>Data</th><th class='order'>Idade</th><th>Ações</th></tr>";
+  tabela.innerHTML =
+    "<tr><th class='order'>Nome</th><th class='order'>Data</th><th class='order'>Idade</th><th>Ações</th></tr>";
 
   aniversarios.forEach((aniversario) => {
     const row = tabela.insertRow();
@@ -83,3 +83,16 @@ function atualizarTabela() {
                           <button onclick="removerAniversario(this)">Remover</button>`;
   });
 }
+
+function initTheme() {
+  const themeButton = document.querySelector(".theme");
+  const darkMode = window.matchMedia("(prefers-color-scheme: dark)");
+  themeButton.addEventListener("click", toggleTheme);
+}
+
+function toggleTheme() {
+  const darkMode = window.matchMedia("(prefers-color-scheme: dark)");
+  document.body.classList.toggle(darkMode.matches ? "light-mode" : "dark-mode");
+}
+
+initTheme();
