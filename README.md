@@ -4,9 +4,9 @@ Este repositório contém um projeto de calendário com funcionalidades de cria�
 
 Diga "Oi" 👇
 <sub> <br> <br>
-    [<img src = "https://img.shields.io/badge/github-black.svg?&style=for-the-badge&logo=github&logoColor=white">](https://github.com/voaneves)
-    [<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white">](https://www.linkedin.com/in/voaneves)
-    [<img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">](https://voaneves.com)
+[<img src = "https://img.shields.io/badge/github-black.svg?&style=for-the-badge&logo=github&logoColor=white">](https://github.com/voaneves)
+[<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white">](https://www.linkedin.com/in/voaneves)
+[<img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">](https://voaneves.com)
 </sub>
 
 ## Tecnologias utilizadas
@@ -46,6 +46,8 @@ O projeto possui a seguinte estrutura de arquivos:
    ```bash
    git clone https://github.com/seu-usuario/calendar-crud.git
 
+   ```
+
 2. Abra o arquivo index.html em um navegador web.
 
 3. Utilize o formulário para adicionar aniversários ao calendário. Preencha o nome da pessoa e a data de nascimento e clique no botão "Adicionar".
@@ -70,7 +72,6 @@ Encontrou algum bug ou problema no projeto? Siga as etapas abaixo:
 
 Obrigado por relatar bugs! Caso queira colaborar com código, você pode abrir um PR e sua participação é mais do que bem-vinda.
 
-
 ## Licença
 
-Este projeto está licenciado sob a MIT License.
+Este projeto está licenciado sob a [MIT License](/LICENSE).
