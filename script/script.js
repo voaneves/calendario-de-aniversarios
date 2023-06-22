@@ -49,9 +49,12 @@
     function removerAniversario(button) {
       const row = button.closest("tr");
       const index = row.rowIndex - 1;
-      aniversarios.splice(index, 1);
-      localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
-      tabela.deleteRow(index);
+
+      if (index >= 0 && index < aniversarios.length) {
+        aniversarios.splice(index, 1);
+        localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
+        tabela.deleteRow(index + 1); // Add 1 to row index to account for table header
+      }
     }
 
     function calcularIdade(date) {
@@ -67,9 +70,9 @@
 
     function atualizarTabela() {
       tabela.innerHTML = `<tr>
-        <th class="order">Nome</th>
-        <th class="order">Data</th>
-        <th class="order">Idade</th>
+        <th>Nome</th>
+        <th>Data</th>
+        <th>Idade</th>
         <th>Ações</th>
       </tr>`;
 
