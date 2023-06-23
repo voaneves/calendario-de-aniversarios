@@ -56,6 +56,13 @@ O projeto possui a seguinte estrutura de arquivos:
 
 5. O tema do calendário pode ser alterado clicando no botão de alternância de tema localizado no canto superior esquerdo.
 
+## To do
+
+[] Adicionar sorting para o array JSON dos aniversarios;
+[] Adicionar notificações para lembrete dos aniversários;
+[] Transformar em webapp;
+[] Melhorar estrutura da página, adicionar tags <meta> e otimizar entrega do javascript.
+
 ## Reportando Bugs
 
 Encontrou algum bug ou problema no projeto? Siga as etapas abaixo:
