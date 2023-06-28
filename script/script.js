@@ -3,20 +3,29 @@
     const form = document.getElementById("form");
     const tabela = document.getElementById("tabela");
     let aniversarios = JSON.parse(localStorage.getItem("aniversarios")) || [];
+    let aniversariosSorted =
+      JSON.parse(localStorage.getItem("aniversariosSorted")) || [];
+    let sorted = JSON.parse(localStorage.getItem("sorted")) || false;
+
+    document.getElementById("sort").addEventListener("click", toggleSort);
+
+    function toggleSort() {
+      sorted = !sorted;
+      localStorage.setItem("sorted", JSON.stringify(sorted));
+      atualizarTabela();
+    }
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       const nome = document.getElementById("nome").value;
       const data = new Date(
         document.getElementById("data").value
-      ).toLocaleDateString(undefined, {
-        timeZone: "UTC",
-      });
+      ).toLocaleDateString(undefined, { timeZone: "UTC" });
 
       if (nome && data) {
         aniversarios.push({ nome, data });
-        localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
-
+        aniversariosSorted = duplicateAndGetNextBirthday(aniversarios);
+        saveAniversarios();
         form.reset();
         atualizarTabela();
       }
@@ -24,11 +33,8 @@
 
     tabela.addEventListener("click", function (event) {
       const button = event.target;
-      if (button.matches("button.editar")) {
-        editarAniversario(button);
-      } else if (button.matches("button.remover")) {
-        removerAniversario(button);
-      }
+      if (button.matches("button.editar")) editarAniversario(button);
+      else if (button.matches("button.remover")) removerAniversario(button);
     });
 
     function editarAniversario(button) {
@@ -41,7 +47,8 @@
       if (novoNome && novaData) {
         aniversario.nome = novoNome;
         aniversario.data = novaData;
-        localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
+        aniversariosSorted = duplicateAndGetNextBirthday(aniversarios);
+        saveAniversarios();
         atualizarTabela();
       }
     }
@@ -52,7 +59,8 @@
 
       if (index >= 0 && index < aniversarios.length) {
         aniversarios.splice(index, 1);
-        localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
+        aniversariosSorted = duplicateAndGetNextBirthday(aniversarios);
+        saveAniversarios();
         tabela.deleteRow(index + 1); // Add 1 to row index to account for table header
       }
     }
@@ -76,7 +84,9 @@
         <th>Ações</th>
       </tr>`;
 
-      aniversarios.forEach((aniversario, index) => {
+      const array = sorted ? aniversariosSorted : aniversarios;
+
+      array.forEach((aniversario) => {
         const row = tabela.insertRow();
         row.innerHTML = `
           <td>${aniversario.nome}</td>
@@ -90,9 +100,42 @@
       });
     }
 
+    function duplicateAndGetNextBirthday(birthdays) {
+      const today = new Date();
+      const duplicate = [...birthdays].sort((a, b) => {
+        const aNextBirthday = getNextBirthday(a.data, today);
+        const bNextBirthday = getNextBirthday(b.data, today);
+        return aNextBirthday - bNextBirthday;
+      });
+
+      return duplicate;
+    }
+
+    function getNextBirthday(date, today) {
+      const [day, month, year] = date.split("/");
+      const birthday = new Date(today.getFullYear(), month - 1, day);
+
+      if (
+        birthday.getMonth() < today.getMonth() ||
+        (birthday.getMonth() === today.getMonth() &&
+          birthday.getDate() < today.getDate())
+      ) {
+        birthday.setFullYear(today.getFullYear() + 1);
+      }
+
+      return birthday;
+    }
+
+    function saveAniversarios() {
+      localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
+      localStorage.setItem(
+        "aniversariosSorted",
+        JSON.stringify(aniversariosSorted)
+      );
+    }
+
     function initTheme() {
       const themeButton = document.querySelector(".theme");
-      const darkMode = window.matchMedia("(prefers-color-scheme: dark)");
       themeButton.addEventListener("click", toggleTheme);
     }
 
