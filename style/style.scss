@@ -151,7 +151,6 @@ form {
 input,
 button {
   padding: 10px;
-  margin-right: 15px;
   margin-bottom: 10px;
   font-size: 16px;
   border-radius: 10px;
@@ -159,6 +158,7 @@ button {
 
 input {
   width: 100%;
+  margin-right: 15px;
   background-color: var(--color-input_bg);
   color: var(--color-letter);
   border: 1px solid var(--color-input_border);
@@ -207,38 +207,133 @@ button {
   }
 }
 
-table {
+.container {
+  min-width: 250px;
   width: 80%;
-  border-radius: 15px;
-  border-spacing: 0;
-  overflow: hidden;
-  margin-top: 20px;
-  font-size: 14px;
-  margin: 20px auto 4rem auto;
-  border: 1px solid var(--color-table-border);
+  margin: 4rem auto;
 
-  th,
-  td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid var(--color-table-border);
+  .switch {
+    --line: #40424a;
+    --dot: #976d0c;
+    --circle: #40424a;
+    cursor: pointer;
+
+    input {
+      display: none;
+
+      & + div {
+        position: relative;
+
+        &:before,
+        &:after {
+          --s: 1;
+          content: "";
+          position: absolute;
+          height: 4px;
+          top: 10px;
+          width: 24px;
+          background: var(--color-th);
+          transform: scaleX(var(--s));
+          transition: transform 0.3s ease;
+        }
+
+        &:before {
+          --s: 0;
+          left: 0;
+          transform-origin: 0 50%;
+          border-radius: 2px 0 0 2px;
+        }
+
+        &:after {
+          left: 28px;
+          transform-origin: 100% 50%;
+          border-radius: 0 2px 2px 0;
+        }
+
+        span {
+          padding-left: 1px;
+          line-height: 25px;
+
+          &:before {
+            --x: 0;
+            --b: var(--color-th);
+            --s: 4px;
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 var(--s) var(--b);
+            transform: translateX(var(--x));
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+          }
+
+          &:not(:empty) {
+            padding-left: 64px;
+          }
+        }
+      }
+
+      &:checked {
+        & + div {
+          &:before {
+            --s: 1;
+          }
+
+          &:after {
+            --s: 0;
+          }
+
+          span {
+            &:before {
+              --x: 28px;
+              --s: 12px;
+              --b: var(--color-button__hover);
+            }
+          }
+        }
+      }
+    }
   }
 
-  tr {
-    &:hover {
-      background-color: var(--color-tr__hover);
-    }
-
-    &:last-child > td {
-      border-bottom: none;
-    }
+  #sort {
+    margin-left: 10px;
+    margin-bottom: 15px;
   }
 
-  th {
-    background-color: var(--color-th);
+  table {
+    width: 100%;
+    border-radius: 15px;
+    border-spacing: 0;
+    overflow: hidden;
+    font-size: 14px;
+    border: 1px solid var(--color-table-border);
 
-    &:hover {
-      background-color: var(--color-th__hover);
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--color-table-border);
+    }
+
+    tr {
+      &:hover {
+        background-color: var(--color-tr__hover);
+      }
+
+      &:last-child > td {
+        border-bottom: none;
+      }
+    }
+
+    th {
+      background-color: var(--color-th);
+
+      &:hover {
+        background-color: var(--color-th__hover);
+      }
     }
   }
 }

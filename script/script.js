@@ -6,8 +6,10 @@
     let aniversariosSorted =
       JSON.parse(localStorage.getItem("aniversariosSorted")) || [];
     let sorted = JSON.parse(localStorage.getItem("sorted")) || false;
-
-    document.getElementById("sort").addEventListener("click", toggleSort);
+    let checkBox = document.getElementById("checkbox");
+    let sortedElement = document.getElementById("sort");
+    sortedElement.addEventListener("click", toggleSort);
+    checkBox.checked = sorted;
 
     function toggleSort() {
       sorted = !sorted;
@@ -39,17 +41,21 @@
 
     function editarAniversario(button) {
       const row = button.closest("tr");
-      const index = row.rowIndex - 1;
-      const aniversario = aniversarios[index];
+      const aniversario = aniversarios.find(
+        (item) => item.nome === row.cells[0].textContent
+      );
       const novoNome = prompt("Novo nome:", aniversario.nome);
-      const novaData = prompt("Nova data:", aniversario.data);
 
-      if (novoNome && novaData) {
+      if (novoNome) {
         aniversario.nome = novoNome;
-        aniversario.data = novaData;
-        aniversariosSorted = duplicateAndGetNextBirthday(aniversarios);
-        saveAniversarios();
-        atualizarTabela();
+        const novaData = prompt("Nova data:", aniversario.data);
+
+        if (novaData) {
+          aniversario.data = novaData;
+          aniversariosSorted = duplicateAndGetNextBirthday(aniversarios);
+          saveAniversarios();
+          atualizarTabela();
+        }
       }
     }
 
