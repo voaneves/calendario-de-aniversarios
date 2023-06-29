@@ -6,10 +6,9 @@
     let aniversariosSorted =
       JSON.parse(localStorage.getItem("aniversariosSorted")) || [];
     let sorted = JSON.parse(localStorage.getItem("sorted")) || false;
-    let checkBox = document.getElementById("checkbox");
-    let sortedElement = document.getElementById("sort");
-    sortedElement.addEventListener("click", toggleSort);
-    checkBox.checked = sorted;
+    document.getElementById("sort").addEventListener("click", toggleSort);
+
+    document.getElementById("checkbox").checked = sorted; // check if it was sorted
 
     function toggleSort() {
       sorted = !sorted;

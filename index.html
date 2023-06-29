@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description"
+            content="Gerencie e acompanhe os aniversários de seus amigos e entes queridos no Calendário de Aniversários. Adicione novos aniversários e mantenha-se atualizado.">
+        <meta name="keywords"
+            content="calendário de aniversários, gerenciar aniversários, acompanhar aniversários, adicionar aniversários">
+        <meta name="author" content="Victor Neves">
+        <meta property="og:title" content="Calendário de Aniversários">
+        <meta property="og:description"
+            content="Gerencie e acompanhe os aniversários de seus amigos e entes queridos no Calendário de Aniversários. Adicione novos aniversários e mantenha-se atualizado.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://voaneves.com/birthday-calendar/">
         <title>Calendário de Aniversários</title>
-        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <link rel="preload" href="style/style.css" as="style"
+            onload="this.onload=null,this.rel='stylesheet'" />
+        <script defer src="script/script.min.js"></script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Calendário de Aniversários",
+                "description": "Gerencie e acompanhe os aniversários de seus amigos e entes queridos no Calendário de Aniversários.",
+                "url": "http://voaneves.com/birthday-calendar/"
+            }
+        </script>
     </head>
     <body>
-        <main>
+        <header>
             <h1 class="title">Calendário de Aniversários</h1>
+        </header>
+        <main>
+            <section class="birthday-input">
+                <form id="form" class="birthday-form">
+                    <input type="text" id="nome" class="input"
+                        placeholder="Digite o nome aqui..." required>
 
-            <form id="form" class="form">
-                <input type="text" id="nome" class="input"
-                    placeholder="Digite o nome aqui..." required>
+                    <input type="date" id="data" placeholder="E nasceu quando?"
+                        class="input" required>
 
-                <input type="date" id="data" placeholder="E nasceu quando?"
-                    class="input" required>
-
-                <button type="submit" class="button">Adicionar</button>
-            </form>
-
-            <div class="container">
+                    <button type="submit" class="button">Adicionar</button>
+                </form>
+            </section>
+            <section class="container">
                 <label class="switch">
                     <input type="checkbox" id="checkbox">
                     <div id="sort">
@@ -34,15 +58,21 @@
                         <th>Ações</th>
                     </tr>
                 </table>
-            </div>
+            </section>
         </main>
+        <footer>
+            <span>
+                Site desenvolvido com ❤️ por <a href="https://voaneves.com">Victor
+                    Neves.</a> Acesse o <a
+                    href="https://github.com/voaneves/birthday-calendar">repositório</a>
+                e contribua com sugestões.
+            </span>
+        </footer>
 
         <nav class="theme">
             <button class="theme-toggle" aria-label="Trocar o tema">
-                <i class="icon-theme"></i>
+                <i class="icon-theme" alt="Ícone de tema"></i>
             </button>
         </nav>
-
-        <script src="script/script.min.js"></script>
     </body>
 </html>
