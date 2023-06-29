@@ -61,7 +61,7 @@ O projeto possui a seguinte estrutura de arquivos:
 - [x] Adicionar sorting para o array JSON dos aniversarios;
 - [x] Com o toggle de sorting ligado, fazer com que a edição seja igual entre o array aniversarios e aniversariosSorted;
 - [ ] Adicionar notificações para lembrete dos aniversários;
-- [ ] Transformar em webapp;
+- [x] Transformar em webapp;
 - [x] Melhorar estrutura da página, adicionar tags <meta> e otimizar entrega do javascript.
 
 ## Reportando Bugs
