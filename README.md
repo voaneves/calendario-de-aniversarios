@@ -1,4 +1,4 @@
-# birthday-calendar
+# calendario-de-aniversarios
 
 Este repositório contém um projeto de calendário com funcionalidades de criação, leitura, atualização e exclusão (CRUD). O projeto foi desenvolvido para treinar conhecimentos obtidos no curso de Sistemas de Informação da XP Educação, no Bootcamp Programador de Software, módulo de Desenvolvimento Web.
 
@@ -19,7 +19,7 @@ O projeto utiliza as seguintes tecnologias:
 
 A página está otimizada para todas as plataformas (cross-browser), com score refletivo no lighthouse abaixo.
 
-[<img src = "img/lighthouse_score.png">](Imagem com score no Lighthouse da Google)
+[<img src = "img/lighthouse_score.png">](https://pagespeed.web.dev/analysis/https-voaneves-com-calendario-de-aniversarios/dy2zzoyur6?form_factor=mobile)
 
 ## Funcionalidades
 
