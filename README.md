@@ -17,7 +17,7 @@ O projeto utiliza as seguintes tecnologias:
 - CSS
 - JavaScript
 
-A página está otimizada para todas as plataformas (cross-browser), com score refletivo no lighthouse abaixo.
+A página está otimizada para todas as plataformas (cross-browser), como score do lighthouse abaixo.
 
 [<img src = "img/lighthouse_score.png">](https://pagespeed.web.dev/analysis/https-voaneves-com-calendario-de-aniversarios/dy2zzoyur6?form_factor=mobile)
 
