@@ -17,6 +17,10 @@ O projeto utiliza as seguintes tecnologias:
 - CSS
 - JavaScript
 
+A página está otimizada para todas as plataformas (cross-browser), com score refletivo no lighthouse abaixo.
+
+[<img src = "img/lighthouse_score.png">](Imagem com score no Lighthouse da Google)
+
 ## Funcionalidades
 
 O projeto possui as seguintes funcionalidades:
