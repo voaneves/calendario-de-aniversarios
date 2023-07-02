@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/voaneves/calendario-de-aniversarios">
-    <img src="img/calendario-de-aniversarios-logo.webp" alt="Logo" width="80" height="80">
+    <img src="img/calendario-de-aniversarios-logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">calendario-de-aniversarios</h3>
@@ -30,7 +30,7 @@
 </div>
 
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Sumário</summary>
   <ol>
     <li>
       <a href="#sobre-o-projeto">Sobre o projeto</a>
@@ -49,7 +49,11 @@
 
 ## Sobre o projeto
 
-[![Calendário de Aniversários][calendario-de-aniversarios-img]][calendario-de-aniversarios-link]
+<p align="center">
+  <a href="https://voaneves.com/calendario-de-aniversarios">
+    <img alt="Imagem do site" src="img/calendario-de-aniversarios.png" />
+  </a>
+</p>
 
 Este repositório contém um projeto de calendário com funcionalidades de criação, leitura, atualização e exclusão (CRUD). O projeto foi desenvolvido para treinar conhecimentos obtidos no curso de Sistemas de Informação da XP Educação, no Bootcamp Programador de Software, módulo de Desenvolvimento Web.
 
