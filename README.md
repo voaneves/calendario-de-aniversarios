@@ -9,8 +9,8 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/voaneves/calendario-de-aniversarios">
+    <img src="img/calendario-de-aniversarios-logo.webp" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">calendario-de-aniversarios</h3>
@@ -161,6 +161,7 @@ Este projeto está licenciado sob a [MIT License](/LICENSE).
 [license-url]: https://github.com/voaneves/calendario-de-aniversarios/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/voaneves
+[calendario-de-aniversarios-logo]: img/calendario-de-aniversarios-logo.webp
 [calendario-de-aniversarios-img]: img/calendario-de-aniversarios.png
 [calendario-de-aniversarios-link]: https://voaneves.com/calendario-de-aniversarios
 [lighthouse-img]: img/lighthouse_score.png
