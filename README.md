@@ -18,14 +18,14 @@
   <p align="center">
     Um site/calendário para guardar aniversários de quem é importante para você!
     <br />
-    <a href="https://github.com/voaneves/calendario-de-atividades"><strong>Explore a documentação »</strong></a>
+    <a href="https://github.com/voaneves/calendario-de-aniversarios"><strong>Explore a documentação »</strong></a>
     <br />
     <br />
-    <a href="https://voaneves.com/calendario-de-atividades">Ver o Demo</a>
+    <a href="https://voaneves.com/calendario-de-aniversarios">Ver o Demo</a>
     ·
-    <a href="https://github.com/voaneves/calendario-de-atividades/issues">Reporte um bug</a>
+    <a href="https://github.com/voaneves/calendario-de-aniversarios/issues">Reporte um bug</a>
     ·
-    <a href="https://github.com/voaneves/calendario-de-atividades/issues">Solicite uma funcionalidade</a>
+    <a href="https://github.com/voaneves/calendario-de-aniversarios/issues">Solicite uma funcionalidade</a>
   </p>
 </div>
 
@@ -150,18 +150,18 @@ Este projeto está licenciado sob a [MIT License](/LICENSE).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [contributors-shield]: https://img.shields.io/github/contributors/voaneves/calendario-de-aniversarios.svg?style=for-the-badge
-[contributors-url]: https://github.com/voaneves/calendario-de-atividades/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/voaneves/calendario-de-atividades.svg?style=for-the-badge
+[contributors-url]: https://github.com/voaneves/calendario-de-aniversarios/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/voaneves/calendario-de-aniversarios.svg?style=for-the-badge
 [forks-url]: https://github.com/voaneves/calendario-de-aniversarios/network/members
-[stars-shield]: https://img.shields.io/github/stars/voaneves/calendario-de-atividades.svg?style=for-the-badge
-[stars-url]: https://github.com/voaneves.com/calendario-de-atividades/stargazers
-[issues-shield]: https://img.shields.io/github/issues/voaneves/calendario-de-atividades.svg?style=for-the-badge
-[issues-url]: https://github.com/voaneves/calendario-de-atividades/issues
-[license-shield]: https://img.shields.io/github/license/voaneves/calendario-de-atividades.svg?style=for-the-badge
-[license-url]: https://github.com/voaneves/calendario-de-atividades/blob/master/LICENSE.txt
+[stars-shield]: https://img.shields.io/github/stars/voaneves/calendario-de-aniversarios.svg?style=for-the-badge
+[stars-url]: https://github.com/voaneves.com/calendario-de-aniversarios/stargazers
+[issues-shield]: https://img.shields.io/github/issues/voaneves/calendario-de-aniversarios.svg?style=for-the-badge
+[issues-url]: https://github.com/voaneves/calendario-de-aniversarios/issues
+[license-shield]: https://img.shields.io/github/license/voaneves/calendario-de-aniversarios.svg?style=for-the-badge
+[license-url]: https://github.com/voaneves/calendario-de-aniversarios/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/voaneves
 [calendario-de-aniversarios-img]: img/calendario-de-aniversarios.png
-[calendario-de-aniversarios-link]: https://voaneves.com/calendario-de-atividades
+[calendario-de-aniversarios-link]: https://voaneves.com/calendario-de-aniversarios
 [lighthouse-img]: img/lighthouse_score.png
 [lighthouse-link]: https://pagespeed.web.dev/analysis/https-voaneves-com-calendario-de-aniversarios/dy2zzoyur6?form_factor=mobile
