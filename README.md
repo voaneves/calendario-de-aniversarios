@@ -1,17 +1,61 @@
-# [calendario-de-aniversarios](https://voaneves.com/calendario-de-aniversarios)
+<a name="readme-top"></a>
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/voaneves/calendario-de-aniversarios/graphs/commit-activity) [![made-with-HTML](https://img.shields.io/badge/Made%20with-HTML-Blue)](https://voaneves.com/calendario-de-aniversarios) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/voaneves/ama)
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+<br />
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">calendario-de-aniversarios</h3>
+
+  <p align="center">
+    Um site/calendário para guardar aniversários de quem é importante para você!
+    <br />
+    <a href="https://github.com/voaneves/calendario-de-atividades"><strong>Explore a documentação »</strong></a>
+    <br />
+    <br />
+    <a href="https://voaneves.com/calendario-de-atividades">Ver o Demo</a>
+    ·
+    <a href="https://github.com/voaneves/calendario-de-atividades/issues">Reporte um bug</a>
+    ·
+    <a href="https://github.com/voaneves/calendario-de-atividades/issues">Solicite uma funcionalidade</a>
+  </p>
+</div>
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#sobre-o-projeto">Sobre o projeto</a>
+      <ul>
+        <li><a href="#tecnologias-utilizadas">Tecnologias utilizadas</a></li>
+      </ul>
+    </li>
+    <li><a href="#funcionalidades">Funcionalidades</a></li>
+    <li><a href="#estrutura-do-projeto">Estrutura do projeto</a></li>
+    <li><a href="#como-usar">Como usar</a></li>
+    <li><a href="#to-do">To do</a></li>
+    <li><a href="#reportando-bugs">Reportando bugs</a></li>
+    <li><a href="#licença">Licença</a></li>
+  </ol>
+</details>
+
+## Sobre o projeto
+
+[![Calendário de Aniversários][calendario-de-aniversarios-img]][calendario-de-aniversarios-link]
 
 Este repositório contém um projeto de calendário com funcionalidades de criação, leitura, atualização e exclusão (CRUD). O projeto foi desenvolvido para treinar conhecimentos obtidos no curso de Sistemas de Informação da XP Educação, no Bootcamp Programador de Software, módulo de Desenvolvimento Web.
 
-Diga "Oi" 👇
-<sub> <br> <br>
-[<img src = "https://img.shields.io/badge/github-black.svg?&style=for-the-badge&logo=github&logoColor=white">](https://github.com/voaneves)
-[<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white">](https://www.linkedin.com/in/voaneves)
-[<img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">](https://voaneves.com)
-</sub>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Tecnologias utilizadas
+### Tecnologias utilizadas
 
 O projeto utiliza as seguintes tecnologias:
 
@@ -21,7 +65,9 @@ O projeto utiliza as seguintes tecnologias:
 
 A página está otimizada para todas as plataformas (cross-browser), como score do lighthouse abaixo.
 
-[<img src = "img/lighthouse_score.png">](https://pagespeed.web.dev/analysis/https-voaneves-com-calendario-de-aniversarios/dy2zzoyur6?form_factor=mobile)
+[![Lighthouse][lighthouse-img]][lighthouse-link]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Funcionalidades
 
@@ -34,16 +80,21 @@ O projeto possui as seguintes funcionalidades:
 - Alternar entre o tema claro e o tema escuro, com cores baseadas no Google Bard.
 - O tabela calendário é gerida em JSON e possui persistência no localStorage.
 - Ícones do icomoon.
+- Botão para classificar por data de aniversário.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Estrutura do projeto
 
-O projeto possui a seguinte estrutura de arquivos:
+O projeto possui a seguinte estrutura dos principais arquivos:
 
 - index.html: arquivo HTML principal que contém a estrutura do calendário e os elementos interativos.
 - style/style.css: arquivo CSS que define o estilo visual do calendário.
 - script/script.js: arquivo JavaScript que contém a lógica de interação do calendário.
 - fonts/theme.woff2: arquivo de fonte icomoon.
 - README.md: arquivo de documentação do projeto (você está lendo este arquivo).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Como usar
 
@@ -62,6 +113,8 @@ O projeto possui a seguinte estrutura de arquivos:
 
 5. O tema do calendário pode ser alterado clicando no botão de alternância de tema localizado no canto superior esquerdo.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## To do
 
 - [x] Adicionar sorting para o array JSON dos aniversarios;
@@ -69,6 +122,8 @@ O projeto possui a seguinte estrutura de arquivos:
 - [ ] Adicionar notificações para lembrete dos aniversários;
 - [x] Transformar em webapp;
 - [x] Melhorar estrutura da página, adicionar tags <meta> e otimizar entrega do javascript.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Reportando Bugs
 
@@ -86,6 +141,27 @@ Encontrou algum bug ou problema no projeto? Siga as etapas abaixo:
 
 Obrigado por relatar bugs! Caso queira colaborar com código, você pode abrir um PR e sua participação é mais do que bem-vinda.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](/LICENSE).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+[contributors-shield]: https://img.shields.io/github/contributors/voaneves/calendario-de-aniversarios.svg?style=for-the-badge
+[contributors-url]: https://github.com/voaneves/calendario-de-atividades/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/voaneves/calendario-de-atividades.svg?style=for-the-badge
+[forks-url]: https://github.com/voaneves/calendario-de-aniversarios/network/members
+[stars-shield]: https://img.shields.io/github/stars/voaneves/calendario-de-atividades.svg?style=for-the-badge
+[stars-url]: https://github.com/voaneves.com/calendario-de-atividades/stargazers
+[issues-shield]: https://img.shields.io/github/issues/voaneves/calendario-de-atividades.svg?style=for-the-badge
+[issues-url]: https://github.com/voaneves/calendario-de-atividades/issues
+[license-shield]: https://img.shields.io/github/license/voaneves/calendario-de-atividades.svg?style=for-the-badge
+[license-url]: https://github.com/voaneves/calendario-de-atividades/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/voaneves
+[calendario-de-aniversarios-img]: img/calendario-de-aniversarios.png
+[calendario-de-aniversarios-link]: https://voaneves.com/calendario-de-atividades
+[lighthouse-img]: img/lighthouse_score.png
+[lighthouse-link]: https://pagespeed.web.dev/analysis/https-voaneves-com-calendario-de-aniversarios/dy2zzoyur6?form_factor=mobile
