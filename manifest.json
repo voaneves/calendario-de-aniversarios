@@ -5,18 +5,18 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "./assets/img/maskable_icon.png",
+      "src": "img/maskable_icon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     },
     {
-      "src": "./assets/img/android-chrome-192x192.png",
+      "src": "img/android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "./assets/img/favicon-32x32.png",
+      "src": "img/favicon-32x32.png",
       "type": "image/png",
       "sizes": "32x32"
     }

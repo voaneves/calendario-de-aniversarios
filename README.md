@@ -12,9 +12,7 @@
   <a href="https://github.com/voaneves/calendario-de-aniversarios">
     <img src="img/calendario-de-aniversarios-logo.png" alt="Logo" width="80" height="80">
   </a>
-
   <h3 align="center">calendario-de-aniversarios</h3>
-
   <p align="center">
     Um site/calendário para guardar aniversários de quem é importante para você!
     <br />
