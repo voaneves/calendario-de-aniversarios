@@ -156,3 +156,22 @@
     initTheme();
   });
 })();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("modal-one");
+  let modalClicked = JSON.parse(localStorage.getItem("modalClicked")) || false;
+
+  if (!clicked) {
+    modal.classList.add("open");
+
+    const exits = modal.querySelectorAll(".modal-exit");
+    exits.forEach(function (exit) {
+      exit.addEventListener("click", function (event) {
+        modalClicked = true;
+        localStorage.setItem("modalClicked", JSON.stringify(sorted));
+        event.preventDefault();
+        modal.classList.remove("open");
+      });
+    });
+  }
+});

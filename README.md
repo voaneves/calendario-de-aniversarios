@@ -119,6 +119,7 @@ O projeto possui a seguinte estrutura dos principais arquivos:
 
 ## To do
 
+- [x] Adicionar modal/tutorial para quem entrar no site;
 - [x] Adicionar sorting para o array JSON dos aniversarios;
 - [x] Com o toggle de sorting ligado, fazer com que a edição seja igual entre o array aniversarios e aniversariosSorted;
 - [ ] Adicionar notificações para lembrete dos aniversários;
