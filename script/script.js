@@ -2,18 +2,43 @@
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("form");
     const tabela = document.getElementById("tabela");
+    const modal = document.getElementById("modal-one");
+    let isModalDismissed =
+      JSON.parse(localStorage.getItem("isModalDismissed")) || false;
     let aniversarios = JSON.parse(localStorage.getItem("aniversarios")) || [];
     let aniversariosSorted =
       JSON.parse(localStorage.getItem("aniversariosSorted")) || [];
     let sorted = JSON.parse(localStorage.getItem("sorted")) || false;
-    document.getElementById("sort").addEventListener("click", toggleSort);
+    const sortButton = document.getElementById("sort");
+    const checkbox = document.getElementById("checkbox");
 
-    document.getElementById("checkbox").checked = sorted; // check if it was sorted
+    sortButton.addEventListener("click", toggleSort);
+    checkbox.checked = sorted;
 
     function toggleSort() {
+      // Toggle no boolean sorted
       sorted = !sorted;
       localStorage.setItem("sorted", JSON.stringify(sorted));
       atualizarTabela();
+    }
+
+    function closeModal() {
+      // Fechar modal quando quando clicar no "X"
+      isModalDismissed = true;
+      localStorage.setItem(
+        "isModalDismissed",
+        JSON.stringify(isModalDismissed)
+      );
+      modal.classList.remove("open");
+    }
+
+    if (!isModalDismissed) {
+      // Verifica se é a primeira vez que o modal aparece
+      modal.classList.add("open");
+      const exits = modal.querySelectorAll(".modal-exit");
+      exits.forEach((exit) => {
+        exit.addEventListener("click", closeModal);
+      });
     }
 
     form.addEventListener("submit", function (event) {
@@ -34,40 +59,43 @@
 
     tabela.addEventListener("click", function (event) {
       const button = event.target;
-      if (button.matches("button.editar")) editarAniversario(button);
-      else if (button.matches("button.remover")) removerAniversario(button);
+      if (button.matches("button.editar")) {
+        editarAniversario(button);
+      } else if (button.matches("button.remover")) {
+        removerAniversario(button);
+      }
     });
 
     function editarAniversario(button) {
+      // Editar um aniversário na tabela
       const row = button.closest("tr");
       const aniversario = aniversarios.find(
         (item) => item.nome === row.cells[0].textContent
       );
+
       const novoNome = prompt("Novo nome:", aniversario.nome);
+      if (!novoNome) return;
 
-      if (novoNome) {
-        aniversario.nome = novoNome;
-        const novaData = prompt("Nova data:", aniversario.data);
+      const novaData = prompt("Nova data:", aniversario.data);
+      if (!novaData) return;
 
-        if (novaData) {
-          aniversario.data = novaData;
-          aniversariosSorted = duplicateAndGetNextBirthday(aniversarios);
-          saveAniversarios();
-          atualizarTabela();
-        }
-      }
+      aniversario.nome = novoNome;
+      aniversario.data = novaData;
+      aniversariosSorted = duplicateAndGetNextBirthday(aniversarios);
+      saveAniversarios();
+      atualizarTabela();
     }
 
     function removerAniversario(button) {
+      // Remover um aniversário da tabela
       const row = button.closest("tr");
       const index = row.rowIndex - 1;
+      if (index < 0 || index >= aniversarios.length) return;
 
-      if (index >= 0 && index < aniversarios.length) {
-        aniversarios.splice(index, 1);
-        aniversariosSorted = duplicateAndGetNextBirthday(aniversarios);
-        saveAniversarios();
-        tabela.deleteRow(index + 1); // Add 1 to row index to account for table header
-      }
+      aniversarios.splice(index, 1);
+      aniversariosSorted = duplicateAndGetNextBirthday(aniversarios);
+      saveAniversarios();
+      tabela.deleteRow(index + 1); // Add 1 to row index to account for table header
     }
 
     function calcularIdade(date) {
@@ -75,13 +103,12 @@
       const birthdateTimeStamp = new Date(`${year}-${month}-${day}`);
       const currentTimestamp = Date.now();
       const difference = currentTimestamp - birthdateTimeStamp.getTime();
-      const currentAge = Math.floor(
-        difference / (1000 * 60 * 60 * 24 * 365.25)
-      );
+      const currentAge = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
       return currentAge;
     }
 
     function atualizarTabela() {
+      // Atualizar a tabela com os aniversários
       tabela.innerHTML = `<tr>
         <th>Nome</th>
         <th>Data</th>
@@ -132,6 +159,7 @@
     }
 
     function saveAniversarios() {
+      // Salvar os aniversários no armazenamento local
       localStorage.setItem("aniversarios", JSON.stringify(aniversarios));
       localStorage.setItem(
         "aniversariosSorted",
@@ -140,11 +168,13 @@
     }
 
     function initTheme() {
+      // Inicia o tema na cor certa, de acordo com o sistema/chrome
       const themeButton = document.querySelector(".theme");
       themeButton.addEventListener("click", toggleTheme);
     }
 
     function toggleTheme() {
+      // Toggle para trocar o tema
       const darkMode = window.matchMedia("(prefers-color-scheme: dark)");
       document.body.classList.toggle(
         darkMode.matches ? "light-mode" : "dark-mode"
@@ -156,22 +186,3 @@
     initTheme();
   });
 })();
-
-document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("modal-one");
-  let modalClicked = JSON.parse(localStorage.getItem("modalClicked")) || false;
-
-  if (!clicked) {
-    modal.classList.add("open");
-
-    const exits = modal.querySelectorAll(".modal-exit");
-    exits.forEach(function (exit) {
-      exit.addEventListener("click", function (event) {
-        modalClicked = true;
-        localStorage.setItem("modalClicked", JSON.stringify(sorted));
-        event.preventDefault();
-        modal.classList.remove("open");
-      });
-    });
-  }
-});
