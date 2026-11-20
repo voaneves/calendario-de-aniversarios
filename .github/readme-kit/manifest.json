@@ -7,6 +7,7 @@
   "tagline": "Guarde os aniversários de quem é importante para você e edite ou remova cada um quando quiser.",
   "description": "Calendário web para cadastrar, editar, remover e ordenar aniversários, salvos no localStorage do navegador.",
   "logo": {
+    "glyph": "calendar",
     "existing": "img/calendario-de-aniversarios-logo.png"
   },
   "buttons": [

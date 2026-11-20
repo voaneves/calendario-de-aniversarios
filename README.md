@@ -2,7 +2,11 @@
 
 <div align="center">
 
-<img alt="Logotipo Calendário de Aniversários" src="https://raw.githubusercontent.com/voaneves/calendario-de-aniversarios/main/img/calendario-de-aniversarios-logo.png" width="112" height="112" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/calendario-de-aniversarios/main/assets/logo/logo-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/voaneves/calendario-de-aniversarios/main/assets/logo/logo-light.svg" />
+  <img alt="Logo do Calendário de Aniversários: uma página de calendário, com um ponto vermelho para o aniversário" src="https://raw.githubusercontent.com/voaneves/calendario-de-aniversarios/main/assets/logo/logo-light.svg" width="112" height="112" />
+</picture>
 
 <h1>Calendário de Aniversários</h1>
 
