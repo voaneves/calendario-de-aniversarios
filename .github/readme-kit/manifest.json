@@ -1,0 +1,46 @@
+{
+  "repo": "calendario-de-aniversarios",
+  "branch": "main",
+  "lang": "pt-BR",
+  "license": "MIT",
+  "name": "Calendário de Aniversários",
+  "tagline": "Guarde os aniversários de quem é importante para você e edite ou remova cada um quando quiser.",
+  "description": "Calendário web para cadastrar, editar, remover e ordenar aniversários, salvos no localStorage do navegador.",
+  "logo": {
+    "existing": "img/calendario-de-aniversarios-logo.png"
+  },
+  "buttons": [
+    {
+      "id": "live",
+      "text": "Abrir o calendário",
+      "kind": "primary",
+      "font": "sans",
+      "href": "https://voaneves.github.io/calendario-de-aniversarios/"
+    },
+    {
+      "id": "use",
+      "text": "Como usar",
+      "kind": "secondary",
+      "font": "sans",
+      "href": "https://github.com/voaneves/calendario-de-aniversarios#como-usar"
+    },
+    {
+      "id": "hire",
+      "text": "Vamos conversar",
+      "kind": "primary",
+      "font": "sans",
+      "href": "https://voaneves.com/#contato",
+      "landing": false
+    },
+    {
+      "id": "site",
+      "text": "voaneves.com",
+      "kind": "secondary",
+      "font": "sans",
+      "href": "https://voaneves.com/",
+      "landing": false
+    }
+  ],
+  "landing": false,
+  "live_url": "https://voaneves.github.io/calendario-de-aniversarios/"
+}
