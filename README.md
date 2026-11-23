@@ -11,8 +11,11 @@
 <h1>Calendário de Aniversários</h1>
 
 <p>
-  <strong>Guarde os aniversários de quem é importante para você e edite ou remova cada um quando quiser.</strong><br />
-  <sub>CRUD em HTML, CSS e JavaScript, com dados salvos no navegador</sub>
+  <strong>Guarde, edite e ordene aniversários direto no navegador com persistência local, tema claro/escuro e suporte offline via PWA.</strong><br />
+  <sub>
+    CRUD em HTML, CSS/SCSS e JavaScript puro com nota máxima no Lighthouse —
+    <kbd>HTML5</kbd> · <kbd>SCSS</kbd> · <kbd>JavaScript</kbd> · <kbd>localStorage</kbd> · <kbd>PWA</kbd>
+  </sub>
 </p>
 
 <p>
@@ -24,12 +27,14 @@
 
 <p>
   <a href="https://github.com/voaneves/calendario-de-aniversarios/blob/main/LICENSE"><img src="https://img.shields.io/github/license/voaneves/calendario-de-aniversarios?style=flat-square&color=0A0A0A" alt="Licença MIT" /></a>
-  <img src="https://img.shields.io/badge/HTML%20%C2%B7%20CSS%20%C2%B7%20JS-PWA-b80000?style=flat-square" alt="HTML, CSS e JavaScript, instalável como PWA" />
+  <img src="https://img.shields.io/badge/HTML_%C2%B7_CSS_%C2%B7_JS-PWA-b80000?style=flat-square" alt="HTML, CSS e JavaScript instalável como PWA" />
+  <img src="https://img.shields.io/badge/Lighthouse-100%2F100-0A0A0A?style=flat-square" alt="Lighthouse 100" />
 </p>
 
 <p>
   <a href="https://voaneves.github.io/calendario-de-aniversarios/">Demo</a> ·
   <a href="#funcionalidades">Funcionalidades</a> ·
+  <a href="#arquitetura">Arquitetura</a> ·
   <a href="#como-usar">Como usar</a> ·
   <a href="#estrutura">Estrutura</a> ·
   <a href="#contato">Contato</a>
@@ -43,9 +48,12 @@
   <img alt="" src="https://raw.githubusercontent.com/voaneves/calendario-de-aniversarios/main/assets/brand/rule-light.svg" width="100%" />
 </picture>
 
+<a id="funcionalidades"></a>
 ## Sobre o projeto
 
-Um calendário no navegador para guardar os aniversários de quem é importante para você, com formulário para adicionar, editar e remover cada data.
+Gerencie os aniversários de quem importa em uma interface rápida sem backend, com cálculo automático de idade e ordenação pela próxima celebração.
+
+Construído para o módulo de Desenvolvimento Web do Bootcamp Programador de Software da **XP Educação** (Sistemas de Informação). Demonstração ao vivo: <https://voaneves.github.io/calendario-de-aniversarios/>
 
 <p align="center">
   <a href="https://voaneves.github.io/calendario-de-aniversarios/">
@@ -53,61 +61,77 @@ Um calendário no navegador para guardar os aniversários de quem é importante 
   </a>
 </p>
 
-Projeto feito para praticar o módulo de Desenvolvimento Web do Bootcamp Programador de Software (XP Educação), no curso de Sistemas de Informação.
+### CRUD completo e ordenação inteligente
 
-**Demo:** <https://voaneves.github.io/calendario-de-aniversarios/>
+O formulário (`#form`) adiciona aniversários com data UTC, calcula a idade atual via `calcularIdade()` e permite editar ou excluir mantendo `aniversarios` e `aniversariosSorted` sincronizados. O switch `#sort` projeta datas já passadas no ano corrente para o próximo ciclo com `duplicateAndGetNextBirthday()`.
 
-### Tecnologias
+### Tutorial animado e auditoria Lighthouse
 
-HTML, CSS e JavaScript puros, sem dependências. A página funciona em vários navegadores e plataformas, com a pontuação de Lighthouse abaixo.
+<table>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="https://raw.githubusercontent.com/voaneves/calendario-de-aniversarios/main/img/sorting.gif" alt="Demonstração animada do switch de ordenação por próximo aniversário" /><br />
+      <sub><strong>Modal de boas-vindas</strong> (<code>#modal-one</code>) exibido até a primeira confirmação</sub>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <a href="https://pagespeed.web.dev/analysis/https-voaneves-com-calendario-de-aniversarios/dy2zzoyur6?form_factor=mobile">
+        <img alt="Pontuação do Lighthouse para o Calendário de Aniversários" src="https://raw.githubusercontent.com/voaneves/calendario-de-aniversarios/main/img/lighthouse_score.png" />
+      </a><br />
+      <sub><strong>100</strong> em Performance, Acessibilidade, Boas Práticas, SEO e PWA</sub>
+    </td>
+  </tr>
+</table>
 
-<p align="center">
-  <img alt="Pontuação do Lighthouse para o Calendário de Aniversários" src="https://raw.githubusercontent.com/voaneves/calendario-de-aniversarios/main/img/lighthouse_score.png" />
-</p>
+<a id="arquitetura"></a>
+## Estado no navegador e cache PWA
 
-## Funcionalidades
+```mermaid
+flowchart LR
+  U["Usuário (#form / #sort)"] --> DOM["script/script.js (DOM & CRUD)"]
+  DOM -->|"getNextBirthday()"| MEM["aniversarios / aniversariosSorted"]
+  MEM -->|"JSON.stringify()"| LS["localStorage"]
+  SW["sw.js (Load)"] --> WK["worker.js (Service Worker)"]
+  WK -->|"install"| C1["precache-v1 ('/')"]
+  WK -->|"fetch"| C2["runtime (Cache-First)"]
+```
 
-- Adicionar aniversários ao calendário por um formulário.
-- Exibir os aniversários em uma tabela abaixo do formulário.
-- Editar e remover aniversários existentes.
-- Botão para ordenar por data de aniversário.
-- Tema claro e escuro, com cores baseadas no Google Bard.
-- A tabela é gerida em JSON e salva no `localStorage`.
-- Ícones do icomoon.
+<dl>
+  <dt><strong>Chaves no <code>localStorage</code></strong></dt>
+  <dd><code>aniversarios</code> (ordem original), <code>aniversariosSorted</code> (ordenado pelo próximo aniversário), <code>sorted</code> (estado do switch) e <code>isModalDismissed</code> (controle do tutorial)[^1].</dd>
+  <dt><strong>Tema claro/escuro e ícones</strong></dt>
+  <dd>Detecta <code>prefers-color-scheme</code> no carregamento e alterna <code>.light-mode</code> / <code>.dark-mode</code> via <code>.theme-toggle</code>, com glifos servidos em <code>fonts/theme.woff2</code>.</dd>
+</dl>
 
-## Estrutura
+<a id="como-usar"></a>
+## Como usar e estrutura
 
-- `index.html`: estrutura do calendário e elementos interativos.
-- `style/style.css`: estilo visual.
-- `script/script.js`: lógica de interação.
-- `fonts/theme.woff2`: fonte de ícones icomoon.
+> [!TIP]
+> Para testar o **Service Worker** (`sw.js` → `worker.js`) e a instalação PWA localmente, sirva a pasta via HTTP em `localhost` (a origem `file://` bloqueia Service Workers).
 
-## Como usar
+```bash
+git clone https://github.com/voaneves/calendario-de-aniversarios.git
+cd calendario-de-aniversarios
+python -m http.server 8000
+```
 
-1. Clone o repositório:
+<a id="estrutura"></a>
+### Arquivos principais
 
-   ```bash
-   git clone https://github.com/voaneves/calendario-de-aniversarios.git
-   ```
+| Caminho | Função |
+| :--- | :--- |
+| [`index.html`](./index.html) | Marcação semântica, modal `#modal-one`, SEO e scripts deferidos |
+| [`script/script.js`](./script/script.js) | Lógica CRUD, `calcularIdade()`, ordenação e alternância de tema |
+| [`style/style.scss`](./style/style.scss) | Fonte SCSS compilada para `style/style.css` |
+| [`sw.js`](./sw.js) · [`worker.js`](./worker.js) · [`manifest.json`](./manifest.json) | Registro e cache offline do PWA (`standalone`) |
 
-2. Abra o `index.html` em um navegador.
-3. Preencha o nome e a data de nascimento e clique em "Adicionar".
-4. Cada aniversário da tabela tem opções para editar e remover.
-5. Troque o tema pelo botão de alternância no canto superior esquerdo.
+### Roadmap
 
-## To do
+- [x] Modal tutorial inicial e alternância de tema claro/escuro
+- [x] Ordenação e edição sincronizada entre `aniversarios` e `aniversariosSorted`
+- [x] PWA instalável e entrega minificada de CSS/JS
+- [ ] Notificações programadas para lembrar aniversários
 
-- [x] Adicionar modal/tutorial para quem entrar no site
-- [x] Adicionar ordenação para o array JSON dos aniversários
-- [x] Com a ordenação ligada, manter a edição igual entre `aniversarios` e `aniversariosSorted`
-- [ ] Adicionar notificações para lembrete dos aniversários
-- [x] Transformar em webapp
-- [x] Melhorar a estrutura da página, adicionar tags `<meta>` e otimizar a entrega do JavaScript
-
-## Reportando bugs
-
-Encontrou um problema? Veja se ele já foi relatado nas [issues](https://github.com/voaneves/calendario-de-aniversarios/issues). Se não, abra uma nova issue com um título claro, os passos para reproduzir e, se possível, capturas de tela. Pull requests também são bem-vindos.
-
+<a id="contato"></a>
 ## Contato
 
 <p>
@@ -121,6 +145,8 @@ Encontrou um problema? Veja se ele já foi relatado nas [issues](https://github.
   <img alt="VOANEVES mark" src="https://raw.githubusercontent.com/voaneves/calendario-de-aniversarios/main/assets/brand/mark-duo.svg" width="32" height="32" />
 </p>
 
-<p align="center"><sub>Distribuído sob a <a href="https://github.com/voaneves/calendario-de-aniversarios/blob/main/LICENSE">licença MIT</a>.</sub></p>
+<p align="center"><sub>Distribuído sob a <a href="https://github.com/voaneves/calendario-de-aniversarios/blob/main/LICENSE">licença MIT</a> © 2026 <a href="https://github.com/voaneves">Victor Neves</a> · <strong>VOANEVES.</strong></sub></p>
 
 <p align="center"><sub><a href="#top">↑ Voltar ao topo</a></sub></p>
+
+[^1]: Nenhum dado é enviado para servidores externos; todos os aniversários permanecem localmente no dispositivo.
